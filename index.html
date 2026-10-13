@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joc X și 0 (Tic-Tac-Toe)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Canvas pentru confetti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="app-container">
+    <header class="header">
+      <div class="logo">
+        <span class="x-brand">X</span> și <span class="o-brand">0</span>
+      </div>
+      <div class="header-controls">
+        <button id="sound-toggle" class="icon-btn" title="Comută sunetul" aria-label="Comută sunetul">
+          <span id="sound-icon">🔊</span>
+        </button>
+        <button id="theme-toggle" class="icon-btn" title="Comută tema" aria-label="Comută tema">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Panou Setări de Joc -->
+    <section class="game-settings">
+      <div class="setting-group">
+        <label for="game-mode">Mod Joc:</label>
+        <div class="segmented-control" id="mode-selector">
+          <button class="segment active" data-mode="ai">🤖 vs Calculator</button>
+          <button class="segment" data-mode="pvp">👥 2 Jucători</button>
+        </div>
+      </div>
+
+      <div class="setting-group" id="difficulty-group">
+        <label for="difficulty-selector">Dificultate AI:</label>
+        <div class="segmented-control" id="difficulty-selector">
+          <button class="segment" data-diff="easy">Ușor</button>
+          <button class="segment" data-diff="medium">Mediu</button>
+          <button class="segment active" data-diff="hard">Imbatabil</button>
+        </div>
+      </div>
+
+      <div class="setting-group" id="symbol-group">
+        <label>Alege simbolul tău:</label>
+        <div class="symbol-choice">
+          <button class="symbol-btn active" data-symbol="X">X (Primul)</button>
+          <button class="symbol-btn" data-symbol="O">0 (Al doilea)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tablou de Scor -->
+    <section class="scoreboard">
+      <div class="score-card x-card" id="card-x">
+        <div class="player-title">Jucător X</div>
+        <div class="score-val" id="score-x">0</div>
+        <div class="player-sub" id="sub-x">Tu</div>
+      </div>
+      <div class="score-card tie-card">
+        <div class="player-title">Egalități</div>
+        <div class="score-val" id="score-ties">0</div>
+        <div class="player-sub">Pace</div>
+      </div>
+      <div class="score-card o-card" id="card-o">
+        <div class="player-title">Jucător 0</div>
+        <div class="score-val" id="score-o">0</div>
+        <div class="player-sub" id="sub-o">AI</div>
+      </div>
+    </section>
+
+    <!-- Indicator Tura -->
+    <div class="turn-status-container">
+      <div class="turn-badge" id="turn-badge">
+        <span class="turn-dot"></span>
+        <span id="turn-text">Rândul lui <strong>X</strong></span>
+      </div>
+    </div>
+
+    <!-- Grila de Joc -->
+    <main class="board-wrapper">
+      <div class="board" id="board">
+        <button class="cell" data-index="0" aria-label="Celula 1"></button>
+        <button class="cell" data-index="1" aria-label="Celula 2"></button>
+        <button class="cell" data-index="2" aria-label="Celula 3"></button>
+        <button class="cell" data-index="3" aria-label="Celula 4"></button>
+        <button class="cell" data-index="4" aria-label="Celula 5"></button>
+        <button class="cell" data-index="5" aria-label="Celula 6"></button>
+        <button class="cell" data-index="6" aria-label="Celula 7"></button>
+        <button class="cell" data-index="7" aria-label="Celula 8"></button>
+        <button class="cell" data-index="8" aria-label="Celula 9"></button>
+        <div class="winning-line" id="winning-line"></div>
+      </div>
+    </main>
+
+    <!-- Mesaj de Final / Notificare -->
+    <div class="message-banner" id="message-banner">
+      <span id="banner-text"></span>
+    </div>
+
+    <!-- Butoane de Acțiune -->
+    <footer class="game-actions">
+      <button id="btn-restart" class="action-btn primary">
+        <span class="btn-icon">🔄</span> Joc Nou
+      </button>
+      <button id="btn-reset-score" class="action-btn secondary">
+        <span class="btn-icon">🗑️</span> Resetează Scorul
+      </button>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
